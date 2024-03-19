@@ -36,7 +36,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: PMA_HOST
-              value: "{{ .Values.app.service.name }}.{{ .Values.app.service.namespace }}" #"my-c.app-c.svc"
+              value: "{{ .Values.app.service.name }}.{{ .Values.app.service.namespace }}.svc" #"my-c.app-c.svc"
             - name: MYSQL_ROOT_PASSWORD
               valueFrom:
                 secretKeyRef:

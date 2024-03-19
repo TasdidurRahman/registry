@@ -108,7 +108,7 @@ autoscaling:
 # db could be in cross namespace
 app:
   service:
-    name: ""
-    namespace: ""
+    name: "my-db"
+    namespace: "testing"
   authSecret:
-    name: ""
+    name: "my-db-auth"
