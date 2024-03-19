@@ -112,4 +112,3 @@ app:
     namespace: ""
   authSecret:
     name: ""
-
