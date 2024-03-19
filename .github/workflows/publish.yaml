@@ -23,7 +23,8 @@ jobs:
       - name: Publish Chart to GHCR
         run: |
           helm package charts/*
-	  helm repo index --url https://ghcr.io/${{ github.repository }}/charts/ --merge index.yaml --merge index.yaml charts/*
+          helm repo index --url https://ghcr.io/${{ github.repository }}/charts/ --merge index.yaml charts/*
+          mkdir -p docs
           mv *.tgz docs/
           mv index.yaml docs/
           git add docs/
@@ -31,3 +32,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git commit -m "Publishing Helm charts to GHCR"
           git push
+
