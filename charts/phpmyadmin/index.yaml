@@ -3,7 +3,7 @@ entries:
   phpmyadmin:
   - apiVersion: v2
     appVersion: v2024.3.16
-    created: "2024-03-19T12:10:49.125975146+06:00"
+    created: "2024-03-19T13:35:07.703594796+06:00"
     description: phpMyAdmin Helm chart for Kubernetes
     digest: b4343a0bb9a0dab23e9b06e664b34a343d7e98f29f78994dd69af596c63c0720
     home: https://www.phpmyadmin.net
@@ -14,6 +14,6 @@ entries:
     name: phpmyadmin
     type: application
     urls:
-    - https://ghcr.io/TasdidurRahman/registry/charts/phpmyadmin-v2024.3.16.tgz
+    - https://github.com/TasdidurRahman/registry/blob/master/charts/phpmyadmin-v2024.3.16.tgz
     version: v2024.3.16
-generated: "2024-03-19T12:10:49.121040994+06:00"
+generated: "2024-03-19T13:35:07.692423318+06:00"
