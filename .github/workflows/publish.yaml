@@ -1,0 +1,33 @@
+name: Publish Helm Charts to GHCR
+
+on:
+  push:
+    branches:
+      - master  # adjust this based on your branch name
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v1
+        with:
+          version: 'latest'
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.HELM_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      - name: Publish Chart to GHCR
+        run: |
+          helm package charts/*
+          helm repo index --url https://ghcr.io/${{ github.repository }}/charts/ --merge index.yaml charts/*
+          mv *.tgz docs/
+          mv index.yaml docs/
+          git add docs/
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Publishing Helm charts to GHCR"
+          git push
