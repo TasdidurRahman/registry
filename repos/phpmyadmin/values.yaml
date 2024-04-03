@@ -81,7 +81,7 @@ namespace:
 
 gateway:
   className: "ace"
-  port: 8082
+  port: "8082"
   # nodePort: 30080
   tlsSecretRef:
     name: service-presets-cert
