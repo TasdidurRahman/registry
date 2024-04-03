@@ -1,0 +1,33 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: man-release
+  namespace: testing
+spec:
+  chart:
+    spec:
+      chart: phpmyadmin
+      reconcileStrategy: ChartVersion
+      sourceRef:
+        kind: HelmRepository
+        name: tasdid-registry
+        namespace: kubeops
+      version: v2024.4.3
+  install:
+    crds: CreateReplace
+    createNamespace: true
+    remediation:
+      retries: -1
+  interval: 5m0s
+  releaseName: man-release
+  storageNamespace: testing
+  targetNamespace: testing
+  timeout: 30m0s
+  upgrade:
+    crds: CreateReplace
+    remediation:
+      retries: -1
+  # valuesFrom:
+  # - kind: ConfigMap
+  #   name: phpmyadmin-my-db-config
+  #   valuesKey: values.yaml
